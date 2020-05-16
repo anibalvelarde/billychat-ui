@@ -91,8 +91,6 @@ const MarketingButtons = (props) => {
 }
 
 export default function FixedPlugin(props) {
-  const [classes, setClasses] = React.useState("dropdown show");
-  const [bg_checked, setBg_checked] = React.useState(true);
   const handleClick = () => {
     props.handleFixedClick();
   };
