@@ -19,6 +19,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.js";
+import { SITE_NAME } from "../../constants";
 
 const useStyles = makeStyles(styles);
 
@@ -59,12 +60,12 @@ export default function RTLNavbarLinks() {
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
         simple={!(window.innerWidth > 959)}
-        aria-label="Dashboard"
+        aria-label={`${SITE_NAME} Dashboard`}
         className={classes.buttonLink}
       >
         <Dashboard className={classes.icons} />
         <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>آمارها</p>
+          <p className={classes.linkText}>{`آمارها ${SITE_NAME}`}</p>
         </Hidden>
       </Button>
       <div className={classes.manager}>
