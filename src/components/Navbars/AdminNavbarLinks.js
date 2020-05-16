@@ -18,9 +18,9 @@ import Search from "@material-ui/icons/Search";
 // core components
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
-
+// constants
+import { SITE_NAME } from "../../constants";
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbarLinks() {
@@ -69,12 +69,12 @@ export default function AdminNavbarLinks() {
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
         simple={!(window.innerWidth > 959)}
-        aria-label="Dashboard"
+        aria-label={`${SITE_NAME}-Dashboard`}
         className={classes.buttonLink}
       >
         <Dashboard className={classes.icons} />
         <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>Dashboard</p>
+          <p className={classes.linkText}>{`${SITE_NAME} Dashboard`}</p>
         </Hidden>
       </Button>
       <div className={classes.manager}>

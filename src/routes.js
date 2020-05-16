@@ -35,11 +35,12 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
+import { COMPANY_NAME } from "./constants";
 
 const dashboardRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: `${COMPANY_NAME} Dashboard`,
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
