@@ -40,7 +40,8 @@ import { COMPANY_NAME } from "./constants";
 
 const makeRoutesFor = [
   { type: "admin", layout: "/admin" },
-  { type: "provider", layout: "/provider" }
+  { type: "provider", layout: "/provider" },
+  { type: "client", layout: "/client" }
 ];
 const templateRoutes = [
   {
@@ -49,7 +50,7 @@ const templateRoutes = [
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
-    addTo: ["admin", "provider"]
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/user",
@@ -57,7 +58,7 @@ const templateRoutes = [
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
-    addTo: ["admin", "provider"]
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/table",
@@ -65,7 +66,7 @@ const templateRoutes = [
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
-    addTo: ["admin", "provider"]
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/maps",
@@ -73,7 +74,7 @@ const templateRoutes = [
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
-    addTo: ["admin", "provider"]
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/notifications",
@@ -81,7 +82,7 @@ const templateRoutes = [
     rtlName: "إخطارات",
     icon: Notifications,
     component: NotificationsPage,
-    addTo: ["admin", "provider"]
+    addTo: ["admin", "provider", "client"]
   }
 ];
 
