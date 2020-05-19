@@ -11,14 +11,13 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
-
+import { dashboardRoutes } from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/rtlStyle.js";
-
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
-
+import { getRoute } from "./utilsForLayouts";
 let ps;
+const routes = dashboardRoutes("/rtl");
 
 const switchRoutes = (
   <Switch>
@@ -65,9 +64,6 @@ export default function RTL({ ...rest }) {
   };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-  const getRoute = () => {
-    return window.location.pathname !== "/admin/maps";
   };
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
