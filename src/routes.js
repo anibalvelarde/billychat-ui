@@ -92,7 +92,6 @@ export const dashboardRoutes = targetLayout => {
     // produce the individual parts by adding the layout to be used
     const layoutsForItem = routeItem.addTo.reduce((templateAcc, addToItem) => {
       var workOn = makeRoutesFor.find(i => i.type === addToItem);
-
       if (workOn) {
         templateAcc.push({
           path: routeItem.path,
@@ -102,8 +101,8 @@ export const dashboardRoutes = targetLayout => {
           component: routeItem.component,
           layout: workOn.layout
         });
-        return templateAcc;
       }
+      return templateAcc;
     }, []);
     console.log(acc);
     acc = acc.concat(...layoutsForItem);
