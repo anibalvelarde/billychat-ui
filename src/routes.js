@@ -38,14 +38,19 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 // import RTLPage from "views/RTLPage/RTLPage.js";
 import { COMPANY_NAME } from "./constants";
 
-const dashboardRoutes = [
+const makeRoutesFor = [
+  { type: "admin", layout: "/admin" },
+  { type: "provider", layout: "/provider" },
+  { type: "client", layout: "/client" }
+];
+const templateRoutes = [
   {
     path: "/dashboard",
     name: `${COMPANY_NAME} Dashboard`,
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
-    layout: "/admin"
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/user",
@@ -53,7 +58,7 @@ const dashboardRoutes = [
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
-    layout: "/admin"
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/table",
@@ -61,31 +66,15 @@ const dashboardRoutes = [
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
-    layout: "/admin"
+    addTo: ["admin", "provider", "client"]
   },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   rtlName: "طباعة",
-  //   icon: LibraryBooks,
-  //   component: Typography,
-  //   layout: "/admin"
-  // },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   rtlName: "الرموز",
-  //   icon: BubbleChart,
-  //   component: Icons,
-  //   layout: "/admin"
-  // },
   {
     path: "/maps",
     name: "Maps",
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
-    layout: "/admin"
+    addTo: ["admin", "provider", "client"]
   },
   {
     path: "/notifications",
@@ -93,24 +82,32 @@ const dashboardRoutes = [
     rtlName: "إخطارات",
     icon: Notifications,
     component: NotificationsPage,
-    layout: "/admin"
+    addTo: ["admin", "provider", "client"]
   }
-  // {
-  //   path: "/rtl-page",
-  //   name: "RTL Support",
-  //   rtlName: "پشتیبانی از راست به چپ",
-  //   icon: Language,
-  //   component: RTLPage,
-  //   layout: "/rtl"
-  // }
-  // {
-  //   path: "/upgrade-to-pro",
-  //   name: "Upgrade To PRO",
-  //   rtlName: "التطور للاحترافية",
-  //   icon: Unarchive,
-  //   component: UpgradeToPro,
-  //   layout: "/admin"
-  // }
 ];
 
-export default dashboardRoutes;
+export const dashboardRoutes = targetLayout => {
+  const listOfRoutes = templateRoutes.reduce((acc, routeItem) => {
+    // spin through the list of items in templateRoutes
+    // produce the individual parts by adding the layout to be used
+    const layoutsForItem = routeItem.addTo.reduce((templateAcc, addToItem) => {
+      var workOn = makeRoutesFor.find(i => i.type === addToItem);
+
+      if (workOn) {
+        templateAcc.push({
+          path: routeItem.path,
+          name: routeItem.name,
+          rtlName: routeItem.rtlName,
+          icon: routeItem.icon,
+          component: routeItem.component,
+          layout: workOn.layout
+        });
+        return templateAcc;
+      }
+    }, []);
+    console.log(acc);
+    acc = acc.concat(...layoutsForItem);
+    return acc;
+  }, []);
+  return listOfRoutes.filter(r => r.layout === targetLayout);
+};

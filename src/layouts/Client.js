@@ -12,18 +12,20 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import { dashboardRoutes } from "routes.js";
-import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
+
+import styles from "assets/jss/material-dashboard-react/layouts/clientStyle.js";
+
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
 import { getRoute } from "./utilsForLayouts";
 
 let ps;
-const routes = dashboardRoutes("/admin");
+const routes = dashboardRoutes("/client");
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/client") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -34,7 +36,7 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/admin" to="/admin/dashboard" />
+    <Redirect from="/client" to="/client/dashboard" />
   </Switch>
 );
 
@@ -66,6 +68,7 @@ export default function Admin({ ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false);
