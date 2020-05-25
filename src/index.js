@@ -17,28 +17,7 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
 
-// core components
-import Admin from "layouts/Admin.js";
-import Provider from "layouts/Provider.js";
-import Client from "layouts/Client.js";
-// import RTL from "layouts/RTL.js";
+import { App } from "./app";
 
-import "assets/css/material-dashboard-react.css?v=1.8.0";
-
-const hist = createBrowserHistory();
-
-ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/admin" component={Admin} />
-      <Route path="/provider" component={Provider} />
-      <Route path="/client" component={Client} />
-      {/* <Route path="/rtl" component={RTL} /> */}
-      <Redirect from="/" to="/admin/dashboard" />
-    </Switch>
-  </Router>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
