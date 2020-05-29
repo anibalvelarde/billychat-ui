@@ -1,45 +1,28 @@
+// src/App.js
+
 import React from "react";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
-// core components
-import {
-  AuthenticationProvider,
-  useAuthN,
-  AuthenticationForm
-} from "./authN/AuthenticationContext";
-import Admin from "layouts/Admin.js";
-import Provider from "layouts/Provider.js";
-import Client from "layouts/Client.js";
-// import RTL from "layouts/RTL.js";
+// New - import the React Router components, and the Profile page component
+import { Router, Route, Switch } from "react-router-dom";
+import Profile from "./components/Profile";
+import history from "./utils/history";
 
-import "assets/css/material-dashboard-react.css?v=1.8.0";
-
-const hist = createBrowserHistory();
-
-const DisplayApp = () => {
-  const [AuthN] = useAuthN();
-
+function App() {
   return (
-    <Router history={hist}>
-      {AuthN.isAuthenticated && (
+    <div className="App">
+      {/* Don't forget to include the history module */}
+      <Router history={history}>
+        <header>
+          <NavBar />
+        </header>
         <Switch>
-          <Route path="/admin" component={Admin} />
-          <Route path="/provider" component={Provider} />
-          <Route path="/client" component={Client} />
-          {/* <Route path="/rtl" component={RTL} /> */}
-          <Redirect from="/" to="/admin/dashboard" />
+          <Route path="/" exact />
+          <Route path="/profile" component={Profile} />
         </Switch>
-      )}
-      {!AuthN.isAuthenticated && <AuthenticationForm />}
-    </Router>
+      </Router>
+    </div>
   );
-};
+}
 
-export const App = () => {
-  return (
-    <AuthenticationProvider>
-      <DisplayApp />
-    </AuthenticationProvider>
-  );
-};
+export default App;

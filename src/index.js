@@ -1,23 +1,33 @@
-/*!
+// src/index.js
 
-=========================================================
-* Material Dashboard React - v1.8.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./app";
+import * as serviceWorker from "./serviceWorker";
+import { Auth0Provider } from "./react-auth0-spa";
+import config from "./auth_config.json";
+import history from "./utils/history";
 
-import { App } from "./app";
+// A function that routes the user to the right place
+// after login
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <App />
+  </Auth0Provider>,
+  document.getElementById("root")
+);
+
+serviceWorker.unregister();
