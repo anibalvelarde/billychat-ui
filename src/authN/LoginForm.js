@@ -8,14 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Icon from "@material-ui/core/Icon";
-import TextField from "@material-ui/core/TextField";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import Info from "components/Typography/Info";
+import { useAuth0 } from "../react-auth0-spa";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +29,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const LoginButton = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  if (isAuthenticated) {
+    return (
+      <Button color="inherit" onClick={() => logout()}>
+        Log out
+      </Button>
+    );
+  } else {
+    return (
+      <Button color="inherit" onClick={() => loginWithRedirect({})}>
+        Log in
+      </Button>
+    );
+  }
+};
+
 const LoginAppBar = () => {
   const classes = useStyles();
 
@@ -54,16 +65,14 @@ const LoginAppBar = () => {
           <Typography variant="h6" className={classes.title}>
             Login to BillyChat.com
           </Typography>
-          <Button color="inherit">Login</Button>
+          <LoginButton />
         </Toolbar>
       </AppBar>
     </div>
   );
 };
 
-const LoginForm = props => {
-  const classes = useStyles();
-
+const LoginForm = () => {
   return (
     <div>
       <GridContainer>
