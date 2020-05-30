@@ -121,6 +121,7 @@ export const dashboardRoutes = targetLayout => {
         },
         []
       );
+      console.log(acc);
       acc = acc.concat(...layoutsForItem);
       return acc;
     },
