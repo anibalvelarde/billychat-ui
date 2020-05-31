@@ -33,21 +33,9 @@ const CallToAction = ({ isAuthenticated }) => {
 };
 
 const MainMenu = ({ isAuthenticated }) => {
-  const classes = useStyles();
   if (!isAuthenticated) return null;
 
   return <CustomizedMenus />;
-  //   return (
-  //     <IconButton
-  //       edge="start"
-  //       className={classes.menuButton}
-  //       color="inherit"
-  //       aria-label="menu"
-  //       disabled={!isAuthenticated}
-  //     >
-  //       <MenuIcon />
-  //     </IconButton>
-  //   );
 };
 
 export default function ButtonAppBar() {
