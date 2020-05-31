@@ -1,7 +1,7 @@
 // src/App.js
 
 import React from "react";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import NewNavBar from "./components/NewNavBar";
 
 // New - import the React Router components, and the Profile page component
