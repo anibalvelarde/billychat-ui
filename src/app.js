@@ -2,6 +2,7 @@
 
 import React from "react";
 import NavBar from "./components/NavBar";
+import NewNavBar from "./components/NewNavBar";
 
 // New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
@@ -14,7 +15,7 @@ function App() {
       {/* Don't forget to include the history module */}
       <Router history={history}>
         <header>
-          <NavBar />
+          <NewNavBar />
         </header>
         <Switch>
           <Route path="/" exact />
