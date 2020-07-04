@@ -26,6 +26,11 @@ const CallToAction = ({ isAuthenticated }) => {
     isAuthenticated
   });
 
+  console.log({
+    from: "NewNavBar.js",
+    url: window.location.href
+  });
+
   if (isAuthenticated) {
     return (
       <button onClick={() => logout({ returnTo: `${window.location.href}` })}>
