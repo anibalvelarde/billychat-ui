@@ -27,7 +27,11 @@ const CallToAction = ({ isAuthenticated }) => {
   });
 
   if (isAuthenticated) {
-    return <button onClick={() => logout()}>Log out</button>;
+    return (
+      <button onClick={() => logout({ returnTo: `${window.location.href}` })}>
+        Log out
+      </button>
+    );
   }
   return <button onClick={() => loginWithRedirect({})}>Log in</button>;
 };

@@ -6,6 +6,12 @@ import { useAuth0 } from "../authn-authr/react-auth0-spa";
 const Profile = () => {
   const { loading, user } = useAuth0();
 
+  console.log({
+    from: "PROFILE:",
+    loading,
+    user
+  });
+
   if (loading || !user) {
     return <div>Loading...</div>;
   }

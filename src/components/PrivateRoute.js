@@ -10,6 +10,7 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
 
   useEffect(() => {
     if (loading || isAuthenticated) {
+      
       return;
     }
     const fn = async () => {
