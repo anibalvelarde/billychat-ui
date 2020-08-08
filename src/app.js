@@ -6,8 +6,10 @@ import NewNavBar from "./components/NewNavBar";
 
 // New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./components/Profile";
+import Profile from "./components/home-view/authed/Profile";
+import Join from "./components/home-view/not-authed/Join";
 import history from "./utils/history";
+import { useAuth0 } from "./authn-authr/react-auth0-spa";
 
 function App() {
   return (
@@ -18,12 +20,19 @@ function App() {
           <NewNavBar />
         </header>
         <Switch>
-          <Route path="/" exact />
-          <Route path="/profile" component={Profile} />
+          <Route path="/" exact component={RenderHomePage()} />
         </Switch>
       </Router>
     </div>
   );
 }
+
+const RenderHomePage = () => {
+  const { isAuthenticated, loading } = useAuth0();
+
+  if (isAuthenticated) return Profile;
+  if (!loading && !isAuthenticated) return Join;
+  return;
+};
 
 export default App;

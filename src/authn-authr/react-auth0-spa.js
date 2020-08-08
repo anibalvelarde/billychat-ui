@@ -70,12 +70,6 @@ export const Auth0Provider = ({
     setUser(user);
   };
 
-  console.log({
-    from: "REACT-AUTH-SPA:",
-    loading,
-    user
-  });
-
   return (
     <Auth0Context.Provider
       value={{
