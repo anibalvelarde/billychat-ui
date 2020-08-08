@@ -3,6 +3,6 @@
  */
 export const fetchCardDataForProvider = (providerId) => {
     reutrn [
-        
+        {}
     ];
 };

@@ -10,6 +10,12 @@ import Profile from "./components/Profile";
 import history from "./utils/history";
 
 function App() {
+
+  console.log({
+    from: "app.js",
+    ...props
+  });
+
   return (
     <div className="App">
       {/* Don't forget to include the history module */}

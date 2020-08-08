@@ -34,13 +34,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/material-dashboard-react.git"
+    "url": "git+https://github.com/anibalvelarde/billychat-ui.git"
   },
   "keywords": [],
-  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
+  "author": "Anibal <anibal@billychat.com> (https://www.billychat.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
+    "url": "https://github.com/anibalvelarde/billychat-ui/issues"
   },
   "homepage": "http://billychatexample.s3-website.us-east-2.amazonaws.com/#/dashboard",
   "optionalDependencies": {
