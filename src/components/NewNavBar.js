@@ -21,16 +21,6 @@ const useStyles = makeStyles(theme => ({
 
 const CallToAction = ({ isAuthenticated }) => {
   const { loginWithRedirect, logout } = useAuth0();
-  console.log({
-    from: "CallToAction",
-    isAuthenticated
-  });
-
-  console.log({
-    from: "NewNavBar.js",
-    url: window.location.href
-  });
-
   if (isAuthenticated) {
     return (
       <button onClick={() => logout({ returnTo: `${window.location.href}` })}>
