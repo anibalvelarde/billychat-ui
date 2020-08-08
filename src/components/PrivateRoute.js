@@ -10,7 +10,6 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
 
   useEffect(() => {
     if (loading || isAuthenticated) {
-      
       return;
     }
     const fn = async () => {
@@ -20,11 +19,6 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
     };
     fn();
   }, [loading, isAuthenticated, loginWithRedirect, path]);
-
-  console.log({
-    from: "PRIVATE ROUTE",
-    path: window.location.pathname
-  });
 
   const render = props =>
     isAuthenticated === true ? <Component {...props} /> : null;

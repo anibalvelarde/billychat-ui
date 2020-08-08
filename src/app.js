@@ -28,13 +28,7 @@ function App() {
 }
 
 const RenderHomePage = () => {
-  const { isAuthenticated, user, loading } = useAuth0();
-  console.log({
-    from: "app.js",
-    isAuthenticated,
-    user,
-    loading
-  });
+  const { isAuthenticated, loading } = useAuth0();
 
   if (isAuthenticated) return Profile;
   if (!loading && !isAuthenticated) return Join;
